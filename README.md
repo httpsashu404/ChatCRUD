@@ -3,9 +3,10 @@ It's chat based CRUD project using express, APIs and mongoDB.</br></br>
 # **How to execute code :** </br>
 step-1  Open project folder in vs code </br>
 step-2  Run command 'npm i' internet must connected </br>
-step-3  Run command 'npm run dev' </br>
-step-4  Open brower type in url 'localhost:8080/chats' press enter </br>
-step-4  Enjoy project </br>
+step-3  Run command 'node init.js' </br>
+step-4  Run command 'npm run dev' </br>
+step-5  Open brower type in url 'localhost:8080/chats' press enter </br>
+step-6  Enjoy project </br>
 **Note :** Must be intalled NodeJs Software in your system </br>
 
 **Image : 1**</br></br>
