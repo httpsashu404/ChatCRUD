@@ -11,7 +11,7 @@
     <form action="/chats/new">
         <button class="add"><b>+ Chat</b></button>
     </form><br>
-    <% for(let chat of chats) {%>
+    <% for(let chat of data) {%>
         <div class="chat">
             <form action="/chats/<%= chat.id %>/edit">
                 <button class="edit">Edit</button>

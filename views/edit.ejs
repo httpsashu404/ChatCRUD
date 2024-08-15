@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>Chat id : <%= chat.id %></h1>
+    <h1>Chat id : <%= data.id %></h1>
     <div class="new">
         <fieldset>
             <center><h2>Edit</h2></center>
-                <b>Name : </b><input type="text" name="from" value="<%= chat.from %>" readonly autofocus required><br><br>
-                <b>To : </b><input type="text" name="to" value="<%= chat.to %>" readonly required><br><br>
-                <form action="/chats/<%= chat._id %>?_method=PUT" method="post" autocomplete="off">
-                    <b>Message : </b><textarea name="msg" id="" rows="5" ><%= chat.msg %></textarea><br>
+                <b>Name : </b><input type="text" name="from" value="<%= data.from %>" readonly><br><br>
+                <b>To : </b><input type="text" name="to" value="<%= data.to %>" readonly ><br><br>
+                <form action="/chats/<%= data._id %>?_method=PUT" method="post" autocomplete="off">
+                    <b>Message : </b><textarea name="msg" id="" rows="5" placeholder="Type your message..." autofocus><%= data.msg %></textarea><br>
                 <button type="submit" class="submit">Update</button>
             </form>
         </fieldset>

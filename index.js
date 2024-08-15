@@ -22,24 +22,22 @@ app.use(express.urlencoded({ extended: true }))
 // require mongoose
 const mongoose = require('mongoose');
 
-// mongoose connection qurey
-async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/whatsapp');
+// mongoose connection check
+try {
+    mongoose.connect('mongodb://127.0.0.1:27017/whatsapp');
+    console.log('Database connected')
+} catch {
+    console.log('Connection failed')
 }
-
-// check mongoose connection
-main().then(() => {
-    console.log('Connection successful')
-})
-    .catch(err => console.log(err));
 
 // requere chat.js
 const Chat = require('./models/chat')
+const { clearScreenDown } = require('readline')
 
 // see all chats
 app.get('/chats', async (req, res) => {
-    let chats = await Chat.find()
-    res.render('index', { chats })
+    let data = await Chat.find()
+    res.render('index', { data })
 })
 
 // get new chat data
@@ -60,7 +58,7 @@ app.post('/chats', (req, res) => {
     )
     newChat.save()
         .then((res) => {
-            console.log('Chat was saved')
+            console.log('Chat saved')
         })
         .catch((err) => {
             console.log(err)
@@ -68,22 +66,22 @@ app.post('/chats', (req, res) => {
     res.redirect('/chats')
 })
 
-// edit chat
+// det data for edit chat
 app.get('/chats/:id/edit', async (req, res) => {
     let { id } = req.params
-    let chat = await Chat.findById(id)
-    res.render('edit', { chat })
+    let data = await Chat.findById(id)
+    res.render('edit', { data })
 })
 
 // update chat
 app.put('/chats/:id', async (req, res) => {
     let { id } = req.params
-    let { msg: newMsg } = req.body
+    let data = { msg } = req.body
     let updateChat = await Chat.findByIdAndUpdate(
-        id,
-        { msg: newMsg },
+        id, data,
         { runValidators: true, new: true }
     )
+    console.log('Chat updated')
     res.redirect('/chats')
 })
 
@@ -91,12 +89,13 @@ app.put('/chats/:id', async (req, res) => {
 app.delete('/chats/:id', async (req, res) => {
     let { id } = req.params
     let delChat = await Chat.findByIdAndDelete(id)
+    console.log('Chat deleted')
     res.redirect('/chats')
 })
 
 // server get requiest
 app.get('/', (req, res) => {
-    res.send('Listen properly')
+    res.send('Working well : <a href="/chats"> localhost:8080/chats</a>')
 })
 
 // server listen port qurey

@@ -15,6 +15,9 @@ h1{
     border: 1px solid silver;
     background-color: antiquewhite;
 }
+sup{
+    color: red;
+}
 .chat .msg{
     color: rgb(134, 134, 134);
 }
@@ -54,7 +57,7 @@ h1{
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgb(0,0,0,.5);
     background-color: antiquewhite;
-}
+}       
 .new input, textarea{
     padding:3px 5px;
     float: right;
